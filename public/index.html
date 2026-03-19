@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WorkingCV</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <aside class="sidebar">
+      <div class="brand"><img src="/logo.png" alt="WorkingCV logo" /></div>
+      <div class="card auth-card">
+        <div id="auth-view">
+          <h2 id="auth-title">Login</h2>
+          <input id="email" placeholder="Email" type="email" />
+          <input id="password" placeholder="Password" type="password" />
+          <button id="auth-submit">Continue</button>
+          <button class="secondary" id="auth-toggle">Create account</button>
+          <p class="tiny">Your projects are saved to the server after login.</p>
+        </div>
+        <div id="user-view" class="hidden">
+          <h3 id="user-email"></h3>
+          <span id="premium-badge" class="badge">Free</span>
+          <div class="stack-sm">
+            <button id="buy-premium">Unlock Premium</button>
+            <button class="secondary" id="logout-btn">Logout</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <label>Language</label>
+        <select id="language"></select>
+      </div>
+
+      <div class="card">
+        <label>Document type</label>
+        <div class="tabs">
+          <button class="tab active" data-type="cv">CV</button>
+          <button class="tab" data-type="cover-letter">Cover letter</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <label>Template</label>
+        <div id="templates" class="template-list"></div>
+      </div>
+
+      <div class="card">
+        <button id="save-project" class="secondary">Save project</button>
+        <button id="download-pdf">Generate PDF</button>
+      </div>
+
+      <div class="card">
+        <label>Saved projects</label>
+        <div id="saved-projects" class="saved-list"></div>
+      </div>
+    </aside>
+
+    <main class="content">
+
+    <section class="hero card">
+      <div class="hero-copy">
+        <span class="eyebrow">WorkingCV</span>
+        <h1>Stwórz profesjonalne CV w 5 minut</h1>
+        <p>Wybierz szablon, wpisz dane i pobierz gotowe CV lub list motywacyjny. Szybko, nowocześnie i bez zbędnych komplikacji.</p>
+        <div class="hero-actions">
+          <a href="#editor-start" class="hero-button">Stwórz CV teraz</a>
+          <span class="hero-note">2 darmowe szablony • 6 eleganckich wersji • wiele języków</span>
+        </div>
+      </div>
+      <div class="hero-points">
+        <div class="hero-point"><strong>Podgląd na żywo</strong><span>Od razu widzisz finalny wygląd dokumentu.</span></div>
+        <div class="hero-point"><strong>Gotowe PDF</strong><span>Eksportuj CV i list motywacyjny jednym kliknięciem.</span></div>
+        <div class="hero-point"><strong>Zapis projektów</strong><span>Wróć do swojego CV i edytuj je później.</span></div>
+      </div>
+    </section>
+
+      <section id="editor-start" class="editor card">
+        <div class="grid two">
+          <div>
+            <label id="lbl-fullName">Full name</label>
+            <input id="fullName" />
+          </div>
+          <div>
+            <label id="lbl-jobTitle">Job title</label>
+            <input id="jobTitle" />
+          </div>
+          <div>
+            <label id="lbl-email">Email</label>
+            <input id="contactEmail" />
+          </div>
+          <div>
+            <label id="lbl-phone">Phone</label>
+            <input id="phone" />
+          </div>
+          <div class="full">
+            <label id="lbl-city">City</label>
+            <input id="city" />
+          </div>
+          <div class="full cv-only">
+            <label id="lbl-summary">Profile</label>
+            <textarea id="summary"></textarea>
+          </div>
+          <div class="full cv-only">
+            <label id="lbl-experience">Experience</label>
+            <textarea id="experience"></textarea>
+          </div>
+          <div class="full cv-only">
+            <label id="lbl-education">Education</label>
+            <textarea id="education"></textarea>
+          </div>
+          <div class="full cv-only">
+            <label id="lbl-skills">Skills</label>
+            <textarea id="skills"></textarea>
+          </div>
+          <div class="full letter-only hidden">
+            <label id="lbl-company">Company</label>
+            <input id="company" />
+          </div>
+          <div class="full letter-only hidden">
+            <label id="lbl-position">Position</label>
+            <input id="position" />
+          </div>
+          <div class="full letter-only hidden">
+            <label id="lbl-letter">Cover letter text</label>
+            <textarea id="letterBody"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="preview card">
+        <div class="preview-paper" id="preview-paper">
+          <div class="preview-header">
+            <div>
+              <h1 id="pv-name">Your Name</h1>
+              <p id="pv-role">Job title</p>
+              <p id="pv-contact">email@example.com • +00 123 456 • City</p>
+            </div>
+          </div>
+          <div id="cv-preview-blocks">
+            <div class="preview-section">
+              <h3 id="pv-summary-title">Profile</h3>
+              <p id="pv-summary">Professional summary preview.</p>
+            </div>
+            <div class="preview-section">
+              <h3 id="pv-exp-title">Experience</h3>
+              <p id="pv-experience">Experience preview.</p>
+            </div>
+            <div class="preview-section">
+              <h3 id="pv-edu-title">Education</h3>
+              <p id="pv-education">Education preview.</p>
+            </div>
+            <div class="preview-section">
+              <h3 id="pv-skills-title">Skills</h3>
+              <p id="pv-skills">Skills preview.</p>
+            </div>
+          </div>
+          <div id="letter-preview-blocks" class="hidden">
+            <div class="preview-section">
+              <h3 id="pv-company-title">Company</h3>
+              <p id="pv-company">Company name</p>
+            </div>
+            <div class="preview-section">
+              <h3 id="pv-position-title">Position</h3>
+              <p id="pv-position">Position title</p>
+            </div>
+            <div class="preview-section">
+              <h3 id="pv-letter-title">Cover letter</h3>
+              <p id="pv-letter">Cover letter preview.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
