@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WorkingCV — CV & Cover Letter Builder</title>
+  <meta name="description" content="Create a professional CV and cover letter in minutes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#landing">
+      <img src="assets/logo.png" alt="WorkingCV logo" class="brand-logo" />
+      <div>
+        <div class="brand-name">WorkingCV</div>
+        <div class="brand-tag" data-i18n="brandTag">Professional documents made simple</div>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="#landing" data-i18n="navHome">Home</a>
+      <a href="#cv-builder" data-i18n="navCV">CV Builder</a>
+      <a href="#letter-builder" data-i18n="navLetter">Cover Letter</a>
+      <select id="languageSelect" class="language-select" aria-label="Language selector"></select>
+    </nav>
+  </header>
+
+  <main>
+    <section id="landing" class="hero section section-gradient">
+      <div class="hero-copy">
+        <span class="pill" data-i18n="heroPill">All templates unlocked</span>
+        <h1 data-i18n="heroTitle">Create a professional CV in 5 minutes</h1>
+        <p class="hero-subtitle" data-i18n="heroSubtitle">Pick a template, fill in your details and download an elegant PDF CV or cover letter instantly.</p>
+        <div class="hero-actions">
+          <a href="#cv-builder" class="btn btn-primary" data-i18n="heroCTA1">Start CV</a>
+          <a href="#letter-builder" class="btn btn-secondary" data-i18n="heroCTA2">Create cover letter</a>
+        </div>
+        <div class="feature-strip">
+          <span data-i18n="feature1">8 CV templates</span>
+          <span data-i18n="feature2">4 letter templates</span>
+          <span data-i18n="feature3">10 languages</span>
+          <span data-i18n="feature4">PDF export</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="assets/logo.png" alt="WorkingCV" class="hero-logo" />
+        <div class="hero-card-grid">
+          <div class="hero-mini cvt-simple-1"></div>
+          <div class="hero-mini cvt-elegant-2"></div>
+          <div class="hero-mini cvt-elegant-5"></div>
+          <div class="hero-mini cvt-simple-2"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 data-i18n="templatesTitle">Choose your template first</h2>
+        <p data-i18n="templatesSubtitle">The client sees all templates immediately and can switch between them at any time.</p>
+      </div>
+      <div class="gallery-wrap">
+        <div>
+          <h3 data-i18n="cvTemplates">CV templates</h3>
+          <div id="cvTemplateGallery" class="template-gallery"></div>
+        </div>
+        <div>
+          <h3 data-i18n="letterTemplates">Cover letter templates</h3>
+          <div id="letterTemplateGallery" class="template-gallery"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cv-builder" class="section builder-section">
+      <div class="section-head inline-head">
+        <div>
+          <h2 data-i18n="cvBuilderTitle">CV builder</h2>
+          <p data-i18n="cvBuilderSubtitle">Fill in the form and watch the selected template update live.</p>
+        </div>
+        <button id="downloadCvBtn" class="btn btn-primary" data-i18n="downloadCV">Download CV PDF</button>
+      </div>
+      <div class="builder-layout">
+        <aside class="builder-form">
+          <div class="mini-template-bar">
+            <div id="cvSelectedThumb" class="selected-template-preview"></div>
+            <div>
+              <div class="mini-label" data-i18n="selectedTemplate">Selected template</div>
+              <div id="cvSelectedTemplateName" class="mini-value"></div>
+            </div>
+          </div>
+
+          <div class="card form-card">
+            <div class="card-head">
+              <h3 data-i18n="personalSection">1. Personal details</h3>
+            </div>
+            <div class="grid-2">
+              <label><span data-i18n="photoLabel">Photo</span><input type="file" id="cvPhoto" accept="image/*" /></label>
+              <label><span data-i18n="fullNameLabel">Full name</span><input type="text" id="fullName" /></label>
+              <label><span data-i18n="addressLabel">Address</span><input type="text" id="address" /></label>
+              <label><span data-i18n="phoneLabel">Phone</span><input type="text" id="phone" /></label>
+              <label><span data-i18n="emailLabel">Email</span><input type="email" id="email" /></label>
+              <label><span data-i18n="summaryLabel">Profile summary</span><textarea id="summary" rows="4"></textarea></label>
+            </div>
+            <div class="dynamic-head">
+              <h4 data-i18n="extraFields">Extra personal fields</h4>
+              <button class="btn btn-small btn-secondary" id="addContactBtn" data-i18n="addField">Add field</button>
+            </div>
+            <div id="extraContactFields" class="stack"></div>
+          </div>
+
+          <div class="card form-card">
+            <div class="dynamic-head">
+              <h3 data-i18n="experienceSection">2. Work experience</h3>
+              <button class="btn btn-small btn-secondary" id="addExperienceBtn" data-i18n="addExperience">Add experience</button>
+            </div>
+            <div id="experienceFields" class="stack"></div>
+          </div>
+
+          <div class="card form-card">
+            <div class="dynamic-head">
+              <h3 data-i18n="educationSection">3. Education</h3>
+              <button class="btn btn-small btn-secondary" id="addEducationBtn" data-i18n="addEducation">Add education</button>
+            </div>
+            <div id="educationFields" class="stack"></div>
+          </div>
+
+          <div class="card form-card">
+            <div class="dynamic-head">
+              <h3 data-i18n="skillsSection">4. Skills</h3>
+              <button class="btn btn-small btn-secondary" id="addSkillBtn" data-i18n="addSkill">Add skill</button>
+            </div>
+            <div id="skillsFields" class="stack"></div>
+          </div>
+        </aside>
+
+        <section class="preview-area">
+          <div id="cvPreview" class="paper cv-preview"></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="letter-builder" class="section builder-section section-soft">
+      <div class="section-head inline-head">
+        <div>
+          <h2 data-i18n="letterBuilderTitle">Cover letter builder</h2>
+          <p data-i18n="letterBuilderSubtitle">Choose a letter template, add your information and download a polished PDF.</p>
+        </div>
+        <button id="downloadLetterBtn" class="btn btn-primary" data-i18n="downloadLetter">Download cover letter PDF</button>
+      </div>
+      <div class="builder-layout">
+        <aside class="builder-form">
+          <div class="mini-template-bar">
+            <div id="letterSelectedThumb" class="selected-template-preview"></div>
+            <div>
+              <div class="mini-label" data-i18n="selectedTemplate">Selected template</div>
+              <div id="letterSelectedTemplateName" class="mini-value"></div>
+            </div>
+          </div>
+
+          <div class="card form-card">
+            <div class="card-head">
+              <h3 data-i18n="letterInfoSection">Your information</h3>
+            </div>
+            <div class="grid-2">
+              <label><span data-i18n="fullNameLabel">Full name</span><input type="text" id="letterName" /></label>
+              <label><span data-i18n="emailLabel">Email</span><input type="email" id="letterEmail" /></label>
+              <label><span data-i18n="phoneLabel">Phone</span><input type="text" id="letterPhone" /></label>
+              <label><span data-i18n="addressLabel">Address</span><input type="text" id="letterAddress" /></label>
+              <label><span data-i18n="companyLabel">Company</span><input type="text" id="companyName" /></label>
+              <label><span data-i18n="positionLabel">Position applied for</span><input type="text" id="positionName" /></label>
+            </div>
+          </div>
+
+          <div class="card form-card">
+            <div class="card-head">
+              <h3 data-i18n="motivationSection">Motivation content</h3>
+            </div>
+            <p class="muted" data-i18n="motivationHelp">Click ready-made sentences to add them to your letter, then edit freely.</p>
+            <div id="sentenceBank" class="sentence-bank"></div>
+            <label><span data-i18n="letterBodyLabel">Letter body</span><textarea id="letterBody" rows="12"></textarea></label>
+          </div>
+        </aside>
+
+        <section class="preview-area">
+          <div id="letterPreview" class="paper letter-preview"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 data-i18n="whyTitle">Why users will like it</h2>
+      </div>
+      <div class="cards-3">
+        <div class="info-card">
+          <h3 data-i18n="why1Title">Fast</h3>
+          <p data-i18n="why1Text">Users pick a template first and instantly see what they are building.</p>
+        </div>
+        <div class="info-card">
+          <h3 data-i18n="why2Title">Clear</h3>
+          <p data-i18n="why2Text">Every section is simple: personal details, experience, education and skills.</p>
+        </div>
+        <div class="info-card">
+          <h3 data-i18n="why3Title">Useful</h3>
+          <p data-i18n="why3Text">Both CV and cover letter can be downloaded as polished PDFs without creating an account.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© <span id="year"></span> WorkingCV</div>
+    <div data-i18n="footerText">CV builder and cover letter creator</div>
+  </footer>
+</body>
+</html>
