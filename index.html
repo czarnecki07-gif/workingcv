@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WorkingCV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo-wrap">
+      <div class="logo-mark">W</div>
+      <div>
+        <div class="logo">WorkingCV</div>
+        <div class="logo-sub" data-i18n="brandSub">Professional resume builder</div>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <select id="languageSelect" class="select compact"></select>
+      <button class="ghost-btn" data-scroll="#builder" data-i18n="startNow">Stwórz CV</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="badge" data-i18n="badge">CV & cover letter creator</span>
+        <h1 data-i18n="heroTitle">Stwórz profesjonalne CV w 5 minut</h1>
+        <p class="hero-text" data-i18n="heroText">Wybierz elegancki szablon, uzupełnij dane i pobierz gotowy dokument PDF. Bez AI, bez chaosu, wszystko odblokowane.</p>
+        <div class="hero-actions">
+          <button class="primary-btn" data-scroll="#builder" data-i18n="ctaBuild">Zacznij tworzyć</button>
+          <button class="secondary-btn" data-scroll="#templates" data-i18n="ctaTemplates">Zobacz szablony</button>
+        </div>
+        <div class="hero-points">
+          <div class="point"><strong>6</strong> <span data-i18n="pointTemplates">eleganckich szablonów CV</span></div>
+          <div class="point"><strong>3</strong> <span data-i18n="pointLetters">szablony listów motywacyjnych</span></div>
+          <div class="point"><strong>10</strong> <span data-i18n="pointLanguages">języków interfejsu</span></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="device">
+          <div class="device-top"></div>
+          <div class="device-body">
+            <div class="mini-template mini-a">
+              <div class="mini-side"></div>
+              <div class="mini-main">
+                <div class="mini-line lg"></div>
+                <div class="mini-line"></div>
+                <div class="mini-line"></div>
+                <div class="mini-line sm"></div>
+              </div>
+            </div>
+            <div class="mini-template mini-b">
+              <div class="mini-head"></div>
+              <div class="mini-grid">
+                <div class="mini-col"></div>
+                <div class="mini-col"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="templates">
+      <div class="section-head">
+        <div>
+          <h2 data-i18n="templatesTitle">Wybierz swój styl</h2>
+          <p data-i18n="templatesText">Kliknij szablon i od razu buduj dokument z podglądem na żywo.</p>
+        </div>
+      </div>
+      <div class="template-groups">
+        <div>
+          <h3 data-i18n="cvTemplates">Szablony CV</h3>
+          <div class="template-grid" id="cvTemplateGrid"></div>
+        </div>
+        <div>
+          <h3 data-i18n="letterTemplates">Szablony listu motywacyjnego</h3>
+          <div class="template-grid small-grid" id="letterTemplateGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section builder-section" id="builder">
+      <div class="mode-switch">
+        <button class="mode-btn active" data-mode="cv" data-i18n="modeCV">CV Builder</button>
+        <button class="mode-btn" data-mode="letter" data-i18n="modeLetter">Cover Letter</button>
+      </div>
+
+      <div class="builder-layout">
+        <aside class="form-panel">
+          <div class="panel-head">
+            <h2 id="formTitle" data-i18n="formTitleCV">Uzupełnij dane</h2>
+            <div class="selected-template-label"><span data-i18n="selectedTemplate">Wybrany szablon:</span> <strong id="selectedTemplateName">Executive</strong></div>
+          </div>
+
+          <div id="cvBuilder">
+            <div class="thumb-row">
+              <div id="selectedCvThumb" class="selected-thumb"></div>
+            </div>
+
+            <div class="accordion">
+              <details open>
+                <summary data-i18n="sectionPersonal">1. Dane osobowe</summary>
+                <div class="details-body">
+                  <div class="upload-row">
+                    <label class="field-label" data-i18n="photo">Zdjęcie</label>
+                    <input type="file" id="photoInput" accept="image/*" class="input" />
+                  </div>
+                  <div class="grid-two">
+                    <label><span data-i18n="fullName">Imię i nazwisko</span><input id="fullName" class="input" placeholder="Jan Kowalski" /></label>
+                    <label><span data-i18n="jobTitle">Stanowisko</span><input id="jobTitle" class="input" placeholder="Senior Accountant" /></label>
+                    <label><span data-i18n="address">Adres</span><input id="address" class="input" placeholder="Warszawa, Polska" /></label>
+                    <label><span data-i18n="phone">Telefon</span><input id="phone" class="input" placeholder="+48 500 000 000" /></label>
+                    <label><span>Email</span><input id="email" class="input" placeholder="jan@email.com" /></label>
+                    <label><span data-i18n="website">LinkedIn / strona</span><input id="website" class="input" placeholder="linkedin.com/in/jankowalski" /></label>
+                  </div>
+                  <label><span data-i18n="profile">Podsumowanie zawodowe</span><textarea id="profile" class="textarea" rows="4"></textarea></label>
+                </div>
+              </details>
+
+              <details open>
+                <summary data-i18n="sectionExperience">2. Doświadczenie zawodowe</summary>
+                <div class="details-body">
+                  <div id="experienceList"></div>
+                  <button class="secondary-btn block" id="addExperienceBtn" data-i18n="addExperience">+ Dodaj doświadczenie</button>
+                </div>
+              </details>
+
+              <details open>
+                <summary data-i18n="sectionEducation">3. Edukacja</summary>
+                <div class="details-body">
+                  <div id="educationList"></div>
+                  <button class="secondary-btn block" id="addEducationBtn" data-i18n="addEducation">+ Dodaj edukację</button>
+                </div>
+              </details>
+
+              <details open>
+                <summary data-i18n="sectionSkills">4. Umiejętności</summary>
+                <div class="details-body">
+                  <div id="skillsList"></div>
+                  <button class="secondary-btn block" id="addSkillBtn" data-i18n="addSkill">+ Dodaj umiejętność</button>
+                </div>
+              </details>
+            </div>
+            <div class="action-row">
+              <button class="primary-btn" id="downloadCvBtn" data-i18n="downloadCV">Pobierz PDF CV</button>
+              <button class="ghost-btn" id="saveCvBtn" data-i18n="saveBrowser">Zapisz w przeglądarce</button>
+            </div>
+          </div>
+
+          <div id="letterBuilder" class="hidden">
+            <div class="thumb-row">
+              <div id="selectedLetterThumb" class="selected-thumb"></div>
+            </div>
+            <div class="accordion">
+              <details open>
+                <summary data-i18n="letterData">1. Dane i stanowisko</summary>
+                <div class="details-body">
+                  <div class="grid-two">
+                    <label><span data-i18n="fullName">Imię i nazwisko</span><input id="letterName" class="input" /></label>
+                    <label><span data-i18n="jobTitleApply">Stanowisko, o które się ubiegasz</span><input id="letterRole" class="input" /></label>
+                    <label><span data-i18n="companyName">Nazwa firmy</span><input id="companyName" class="input" /></label>
+                    <label><span data-i18n="cityDate">Miasto i data</span><input id="cityDate" class="input" /></label>
+                    <label><span data-i18n="emailPhone">Email / telefon</span><input id="letterContact" class="input" /></label>
+                    <label><span data-i18n="recipient">Adresat</span><input id="recipient" class="input" /></label>
+                  </div>
+                </div>
+              </details>
+              <details open>
+                <summary data-i18n="letterContent">2. Treść listu</summary>
+                <div class="details-body">
+                  <div class="sentence-bank">
+                    <div class="sentence-bank-head" data-i18n="readySentences">Gotowe zdania — kliknij, aby dodać</div>
+                    <div id="sentenceBank" class="sentence-bank-list"></div>
+                  </div>
+                  <label><span data-i18n="letterBody">Treść listu</span><textarea id="letterBody" class="textarea large-textarea" rows="12"></textarea></label>
+                </div>
+              </details>
+            </div>
+            <div class="action-row">
+              <button class="primary-btn" id="downloadLetterBtn" data-i18n="downloadLetter">Pobierz PDF listu</button>
+              <button class="ghost-btn" id="saveLetterBtn" data-i18n="saveBrowser">Zapisz w przeglądarce</button>
+            </div>
+          </div>
+        </aside>
+
+        <section class="preview-panel">
+          <div class="preview-toolbar">
+            <span data-i18n="livePreview">Podgląd na żywo</span>
+          </div>
+          <div id="printArea">
+            <div id="cvPreviewWrap">
+              <div id="cvPreview" class="paper cv-paper template-executive"></div>
+            </div>
+            <div id="letterPreviewWrap" class="hidden">
+              <div id="letterPreview" class="paper letter-paper letter-classic"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© <span id="year"></span> WorkingCV</div>
+    <div data-i18n="footerText">Nowoczesny kreator CV i listów motywacyjnych.</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
