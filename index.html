@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WorkingCV</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">WorkingCV</div>
+    <div class="topbar-right">
+      <button class="top-link active" data-mode="cv" id="navCv">CV</button>
+      <button class="top-link" data-mode="letter" id="navLetter">List motywacyjny</button>
+      <select id="langSelect" aria-label="Language">
+        <option value="pl">PL</option><option value="en">EN</option><option value="de">DE</option>
+        <option value="es">ES</option><option value="fr">FR</option><option value="it">IT</option>
+        <option value="pt">PT</option><option value="nl">NL</option><option value="cs">CZ</option><option value="sk">SK</option>
+      </select>
+    </div>
+  </header>
+
+  <section class="hero no-print">
+    <div class="hero-card">
+      <div>
+        <div class="eyebrow" id="eyebrow">Profesjonalne dokumenty rekrutacyjne</div>
+        <h1 id="heroTitle">Stwórz eleganckie CV i list motywacyjny</h1>
+        <p id="heroSubtitle">Wybierz estetyczny szablon, uzupełnij dane i pobierz gotowy PDF.</p>
+        <div class="hero-actions">
+          <button class="primary-btn" data-mode="cv" id="heroCvBtn">Stwórz CV</button>
+          <button class="ghost-btn" data-mode="letter" id="heroLetterBtn">Stwórz list</button>
+        </div>
+      </div>
+      <div class="hero-mini">
+        <div class="mini-sheet"><div class="mini-bar"></div><div class="mini-lines"><span></span><span></span><span class="w80"></span><span></span></div></div>
+        <div class="mini-sheet light"><div class="mini-head"></div><div class="mini-lines"><span></span><span class="w70"></span><span></span><span class="w85"></span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="shell">
+    <section id="cvSection" class="section active-section">
+      <div class="section-top no-print">
+        <h2 id="cvTemplateTitle">Wybierz szablon CV</h2>
+        <p id="cvTemplateSubtitle">Kliknij miniaturę, aby od razu budować dokument w wybranym stylu.</p>
+      </div>
+      <div class="template-grid no-print" id="cvTemplateGrid"></div>
+      <div class="workspace">
+        <aside class="panel no-print">
+          <h3 id="cvFormTitle">Uzupełnij dane</h3>
+          <div class="form-row">
+            <div class="form-group"><label id="photoLabel">Zdjęcie</label><input type="file" id="photoInput" accept="image/*" /></div>
+            <div class="form-group"><label id="fullNameLabel">Imię i nazwisko</label><input id="fullName" placeholder="Jan Kowalski" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label id="jobTitleLabel">Stanowisko / profil</label><input id="jobTitle" placeholder="Senior Sales Manager" /></div>
+            <div class="form-group"><label id="addressLabel">Adres</label><input id="address" placeholder="Warszawa, Polska" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label id="phoneLabel">Telefon</label><input id="phone" placeholder="+48 500 000 000" /></div>
+            <div class="form-group"><label id="emailLabel">E-mail</label><input id="email" placeholder="jan@email.com" /></div>
+          </div>
+          <div class="form-group">
+            <label id="summaryLabel">Podsumowanie</label>
+            <textarea id="summary" rows="5" placeholder="Krótko opisz swoje doświadczenie, specjalizację i największe atuty."></textarea>
+          </div>
+          <div class="repeat-block"><div class="repeat-head"><h4 id="experienceLabel">Doświadczenie zawodowe</h4><button class="small-btn" id="addExperienceBtn">+ Dodaj</button></div><div id="experienceList"></div></div>
+          <div class="repeat-block"><div class="repeat-head"><h4 id="educationLabel">Edukacja</h4><button class="small-btn" id="addEducationBtn">+ Dodaj</button></div><div id="educationList"></div></div>
+          <div class="repeat-block"><div class="repeat-head"><h4 id="skillsLabel">Umiejętności</h4><button class="small-btn" id="addSkillBtn">+ Dodaj</button></div><div id="skillsList"></div></div>
+          <button class="primary-btn full-width" id="downloadCvBtn">Pobierz PDF CV</button>
+        </aside>
+        <section class="preview-area">
+          <div class="preview-label no-print" id="cvPreviewBadge">Podgląd CV</div>
+          <article id="cvPreview" class="sheet cv-template-a"></article>
+        </section>
+      </div>
+    </section>
+
+    <section id="letterSection" class="section">
+      <div class="section-top no-print">
+        <h2 id="letterTemplateTitle">Wybierz szablon listu motywacyjnego</h2>
+        <p id="letterTemplateSubtitle">Po kliknięciu gotowego zdania treść zostanie dodana do listu i od razu pokaże się w podglądzie.</p>
+      </div>
+      <div class="template-grid no-print" id="letterTemplateGrid"></div>
+      <div class="workspace">
+        <aside class="panel no-print">
+          <h3 id="letterFormTitle">Uzupełnij list</h3>
+          <div class="form-row">
+            <div class="form-group"><label id="letterNameLabel">Imię i nazwisko</label><input id="letterName" placeholder="Jan Kowalski" /></div>
+            <div class="form-group"><label id="letterAddressLabel">Adres</label><input id="letterAddress" placeholder="Warszawa, Polska" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label id="letterPhoneLabel">Telefon</label><input id="letterPhone" placeholder="+48 500 000 000" /></div>
+            <div class="form-group"><label id="letterEmailLabel">E-mail</label><input id="letterEmail" placeholder="jan@email.com" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label id="companyLabel">Firma</label><input id="company" placeholder="Nazwa firmy" /></div>
+            <div class="form-group"><label id="positionLabel">Stanowisko</label><input id="position" placeholder="Stanowisko, o które się ubiegasz" /></div>
+          </div>
+          <div class="form-group"><label id="recipientLabel">Adresat / dział rekrutacji</label><input id="recipient" placeholder="Dział HR" /></div>
+          <div class="repeat-block"><div class="repeat-head"><h4 id="sentenceBankLabel">Gotowe zdania</h4></div><div class="chip-list" id="sentenceBank"></div></div>
+          <div class="form-group"><label id="letterBodyLabel">Treść listu</label><textarea id="letterBody" rows="12" placeholder="Tutaj powstanie treść listu."></textarea></div>
+          <button class="primary-btn full-width" id="downloadLetterBtn">Pobierz PDF listu</button>
+        </aside>
+        <section class="preview-area">
+          <div class="preview-label no-print" id="letterPreviewBadge">Podgląd listu</div>
+          <article id="letterPreview" class="sheet letter-template-a"></article>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
