@@ -1,1 +1,0 @@
-WorkingCV elegant static edition
