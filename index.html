@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>WorkingCV</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 class="title">WorkingCV</h1>
+
+<div class="container">
+
+<div class="form">
+<input id="name" placeholder="Imię i nazwisko">
+<input id="title" placeholder="Stanowisko">
+<textarea id="profile" placeholder="Profil zawodowy"></textarea>
+<textarea id="exp" placeholder="Doświadczenie"></textarea>
+<textarea id="skills" placeholder="Umiejętności"></textarea>
+<textarea id="edu" placeholder="Edukacja"></textarea>
+<input type="file" id="photo">
+
+<button onclick="generate()">Pobierz PDF</button>
+</div>
+
+<div class="preview">
+<div class="cv">
+
+<div class="left">
+<img id="img">
+<div id="contact"></div>
+</div>
+
+<div class="right">
+<h2 id="pname"></h2>
+<h3 id="ptitle"></h3>
+
+<h4>Profil</h4>
+<p id="pprofile"></p>
+
+<h4>Doświadczenie</h4>
+<p id="pexp"></p>
+
+<h4>Umiejętności</h4>
+<p id="pskills"></p>
+
+<h4>Edukacja</h4>
+<p id="pedu"></p>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
