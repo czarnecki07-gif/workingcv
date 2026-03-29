@@ -1,0 +1,31 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title><span class="brand-working">Working</span><span class="brand-cv">CV</span></title><link rel="stylesheet" href="styles.css"></head><body>
+<header class="topbar no-print"><div class="brand"><span class="brand-working">Working</span><span class="brand-cv">CV</span></div><div class="top-actions"><button class="mode-btn active" data-mode="cv" id="navCv">CV</button><button class="mode-btn" data-mode="letter" id="navLetter">List motywacyjny</button><select id="langSelect"><option value="pl">PL</option><option value="en">EN</option></select></div></header>
+<section class="hero no-print"><div class="hero-card"><div><div class="eyebrow">Profesjonalne dokumenty rekrutacyjne</div><h1 id="heroTitle">Stwórz eleganckie CV i list motywacyjny</h1><p id="heroSubtitle">Korporacyjne szablony, czytelne miniatury i podgląd A4 na żywo.</p></div><div class="hero-mini"><div class="mini-card mini-dark"></div><div class="mini-card mini-light"></div></div></div></section>
+<main class="shell">
+<section id="cvSection" class="active-section"><div class="section-head no-print"><h2 id="templatesCv">Szablony CV</h2></div><div id="cvThumbs" class="thumb-grid no-print"></div><div class="workspace">
+<aside class="panel no-print"><h3 id="formCv">Dane CV</h3>
+<div class="grid2"><div class="field"><label id="photo">Zdjęcie</label><input id="photoInput" type="file" accept="image/*"><button type="button" id="noPhotoBtn" class="secondary-btn small no-print">Bez zdjęcia</button></div><div class="field"><label id="photoPosition">Przesunięcie zdjęcia</label><input id="photoY" type="range" min="0" max="100" value="35"></div></div>
+
+<div class="grid2"><div class="field"><label id="fullName">Imię i nazwisko</label><input id="fullNameInput"></div><div class="field"><label id="jobTitle">Stanowisko / profil</label><input id="jobTitleInput"></div></div>
+<div class="grid2"><div class="field"><label id="address">Adres</label><input id="addressInput"></div><div class="field"><label id="phone">Telefon</label><input id="phoneInput"></div></div>
+<div class="field"><label id="email">E-mail</label><input id="emailInput"></div>
+<div class="field"><label id="summary">Profil zawodowy</label><textarea id="summaryInput" rows="4"></textarea></div>
+<div class="repeat"><div class="repeat-head"><h4 id="experience">Doświadczenie zawodowe</h4><button class="small-btn" id="addExpBtn">+ Dodaj</button></div><div id="expList"></div></div>
+<div class="repeat"><div class="repeat-head"><h4 id="skills">Umiejętności</h4><button class="small-btn" id="addSkillBtn">+ Dodaj</button></div><div id="skillList"></div></div>
+<div class="repeat"><div class="repeat-head"><h4 id="languages">Języki</h4><button class="small-btn" id="addLangBtn">+ Dodaj</button></div><div id="langList"></div></div>
+<div class="repeat"><div class="repeat-head"><h4 id="education">Edukacja</h4><button class="small-btn" id="addEduBtn">+ Dodaj</button></div><div id="eduList"></div></div>
+<button class="primary-btn full" id="downloadCv">Pobierz PDF CV</button></aside>
+<section class="preview-pane"><div class="page-label no-print" id="previewCv">Format A4 — podgląd CV</div><div class="page-frame"><article id="cvPreview" class="sheet"></article></div></section>
+</div></section>
+<section id="letterSection"><div class="section-head no-print"><h2 id="templatesLetter">Szablony listu</h2></div><div id="letterThumbs" class="thumb-grid letter-grid no-print"></div><div class="workspace">
+<aside class="panel no-print"><h3 id="formLetter">Dane listu</h3>
+<div class="grid2"><div class="field"><label id="letterName">Imię i nazwisko</label><input id="letterNameInput"></div><div class="field"><label id="company">Firma</label><input id="companyInput"></div></div>
+<div class="grid2"><div class="field"><label id="position">Stanowisko</label><input id="positionInput"></div><div class="field"><label id="recipient">Adresat / HR</label><input id="recipientInput"></div></div>
+<div class="grid2"><div class="field"><label id="addressL">Adres</label><input id="letterAddressInput"></div><div class="field"><label id="phoneL">Telefon</label><input id="letterPhoneInput"></div></div>
+<div class="field"><label id="emailL">E-mail</label><input id="letterEmailInput"></div>
+<div class="repeat"><div class="repeat-head"><h4 id="prompts">Podpowiedzi</h4></div><div id="promptBank" class="chips"></div></div>
+<div class="field"><label id="letterBody">Treść listu</label><textarea id="letterBodyInput" rows="11"></textarea></div>
+<button class="primary-btn full" id="downloadLetter">Pobierz PDF listu</button></aside>
+<section class="preview-pane"><div class="page-label no-print" id="previewLetter">Format A4 — podgląd listu</div><div class="page-frame"><article id="letterPreview" class="sheet"></article></div></section>
+</div></section>
+</main><script src="script.js"></script></body></html>
